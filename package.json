@@ -1,0 +1,60 @@
+{
+  "name": "@multi-sig/main",
+  "version": "1.0.0",
+  "keywords": [
+    "ethereum",
+    "react",
+    "uniswap",
+    "workspaces",
+    "yarn"
+  ],
+  "private": true,
+  "scripts": {
+    "react-app:build": "yarn workspace @multi-sig/react-app build --max-old-space-size=12288",
+    "react-app:eject": "yarn workspace @multi-sig/react-app eject",
+    "react-app:start": "yarn workspace @multi-sig/react-app start",
+    "react-app:test": "yarn workspace @multi-sig/react-app test",
+    "build": "yarn workspace @multi-sig/react-app build --max-old-space-size=12288",
+    "chain": "yarn workspace @multi-sig/hardhat chain",
+    "fork": "yarn workspace @multi-sig/hardhat fork",
+    "node": "yarn workspace @multi-sig/hardhat chain",
+    "test": "yarn workspace @multi-sig/hardhat test",
+    "start": "yarn workspace @multi-sig/react-app start",
+    "compile": "yarn workspace @multi-sig/hardhat compile",
+    "deploy": "yarn workspace @multi-sig/hardhat deploy",
+    "watch": "yarn workspace @multi-sig/hardhat watch",
+    "accounts": "yarn workspace @multi-sig/hardhat accounts",
+    "balance": "yarn workspace @multi-sig/hardhat balance",
+    "send": "yarn workspace @multi-sig/hardhat send",
+    "ipfs": "yarn workspace @multi-sig/react-app ipfs",
+    "surge": "yarn workspace @multi-sig/react-app surge",
+    "s3": "yarn workspace @multi-sig/react-app s3",
+    "ship": "yarn workspace @multi-sig/react-app ship",
+    "generate": "yarn workspace @multi-sig/hardhat generate",
+    "account": "yarn workspace @multi-sig/hardhat account",
+    "mine": "cd packages/hardhat && npx hardhat mine",
+    "wallet": "cd packages/hardhat && npx hardhat wallet",
+    "fundedwallet": "cd packages/hardhat && npx hardhat fundedwallet",
+    "flatten": "cd packages/hardhat && npx hardhat flatten",
+    "graph-run-node": "cd docker/graph-node && docker-compose up",
+    "graph-remove-node": "cd docker/graph-node && docker-compose down",
+    "graph-prepare": "mustache packages/subgraph/config/config.json packages/subgraph/src/subgraph.template.yaml > packages/subgraph/subgraph.yaml",
+    "graph-codegen": "yarn workspace @multi-sig/subgraph graph codegen",
+    "graph-build": "yarn workspace @multi-sig/subgraph graph build",
+    "graph-create-local": "yarn workspace @multi-sig/subgraph graph create --node http://localhost:8020/ multi-sig/your-contract",
+    "graph-remove-local": "yarn workspace @multi-sig/subgraph graph remove --node http://localhost:8020/ multi-sig/your-contract",
+    "graph-deploy-local": "yarn workspace @multi-sig/subgraph graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 multi-sig/your-contract",
+    "graph-ship-local": "yarn graph-prepare && yarn graph-codegen && yarn graph-deploy-local",
+    "deploy-and-graph": "yarn deploy && yarn graph-ship-local",
+    "backend": "cd packages/backend && node index"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@graphprotocol/graph-ts",
+      "**/@graphprotocol/graph-ts/**"
+    ]
+  }
+}
